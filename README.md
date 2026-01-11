@@ -21,7 +21,27 @@
 
 이 프로젝트는 Docker 컨테이너로 실행됩니다. **Portainer**를 사용하면 가장 쉽게 설치할 수 있습니다.
 
-### 방법 1: Portainer (추천)
+### 방법 1: Portainer - YAML 붙여넣기 (가장 쉬움)
+이미 빌드된 이미지를 Docker Hub에서 가져와 실행하는 방식입니다.
+
+1.  **Portainer** 접속 -> **Stacks** -> **Add stack** 클릭.
+2.  **Build method**에서 **Web editor** 선택.
+3.  아래 내용을 붙여넣고 **Deploy the stack** 클릭.
+
+```yaml
+version: '3'
+services:
+  disk-dashboard:
+    image: grt47/disk_info:latest
+    ports:
+      - "6091:80"
+    environment:
+      - SCRUTINY_BASE=http://192.168.1.100:8080/api/summary
+      - WEAR_INVERT_CONFIG=key:value # (옵션)
+    restart: always
+```
+
+### 방법 2: Portainer - Git Repository (고급)
 소스 코드를 직접 빌드하여 실행하므로, 코드를 수정하면 바로 반영할 수 있습니다.
 
 1.  **Portainer** 접속 -> **Stacks** -> **Add stack** 클릭.
@@ -34,7 +54,7 @@
     *   `WEAR_INVERT_CONFIG`: 수명 반전이 필요한 디스크 설정 (선택 사항)
 6.  **Deploy the stack** 클릭.
 
-### 방법 2: Docker Compose (터미널)
+### 방법 3: Docker Compose (터미널)
 ```bash
 git clone https://github.com/GRT47/Disk-Info.git
 cd Disk-Info
