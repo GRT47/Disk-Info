@@ -36,7 +36,7 @@ services:
     ports:
       - "6091:80"
     environment:
-      - SCRUTINY_BASE=http://192.168.1.100:8080
+      - SCRUTINY_BASE=http://127.0.0.1:8080
       - WEAR_INVERT_CONFIG=key:Samsung SSD 870 EVO 4TB, /dev/sata1 (옵션)
     restart: always
 ```
@@ -71,7 +71,7 @@ services:
     ports:
       - "6091:80" # 포트 변경 가능
     environment:
-      - SCRUTINY_BASE=http://192.168.1.100:8080
+      - SCRUTINY_BASE=http://127.0.0.1:8080
       - WEAR_INVERT_CONFIG=key:Samsung SSD 870 EVO 4TB, /dev/sata1 (옵션)
     restart: always
 ```
