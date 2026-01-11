@@ -67,7 +67,6 @@ docker-compose up -d --build
 version: '3'
 services:
   disk-dashboard:
-    build: .
     ports:
       - "6091:80" # 포트 변경 가능
     environment:
@@ -88,6 +87,3 @@ services:
 `disk_info.php` 파일의 하단 `<script>` 또는 PHP 코드를 수정하세요.
 - **정렬 로직**: `<script>` 내 `Sortable` 관련 부분.
 - **언어 텍스트**: `const i18n = { ... }` 객체 내의 텍스트 수정.
-
-## 📝 라이선스
-MIT License
