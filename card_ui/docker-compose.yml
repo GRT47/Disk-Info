@@ -1,0 +1,13 @@
+services:
+  disk-dashboard:
+    build: .
+    container_name: disk-dashboard
+    ports:
+      - "6091:80"
+    environment:
+      # Scrutiny API 서버 주소
+      - SCRUTINY_BASE=http://192.168.1.2:6090
+      # 수명 계산 설정 (공백 없이 줄바꿈은 \n으로 표기하거나 여러 줄로 작성)
+      # 예: - "WEAR_INVERT_CONFIG=convert_regex_model=/Samsung/i\ndisplay_invert_serial=S12345"
+      - WEAR_INVERT_CONFIG=Samsung SSD 870 EVO 4TB
+    restart: unless-stopped
